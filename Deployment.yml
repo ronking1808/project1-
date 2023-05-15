@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: dep_ronco
+spec:
+   replicas: 2
+   selector: ronco     # tells the controller which pods to watch/belong to
+    matchLabels:
+     app: mrdevops
+   template:
+      metadata:
+        labels:
+          app: ronco
+      spec:
+       containers:
+        - name: mrdevops
+          image: ronkingc2000/ronc2023
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
